@@ -19,7 +19,7 @@ public class WarmUpFunctionTest{
 	@Test
 	public void TestIfGetYearWhenPriceTurnZeroFunctionReturnTheDesiredResult(){
 
-		assertEquals(0 , warmUpFunction.GetYearWhenPriceTurnZero(1));
+		assertEquals(12 , warmUpFunction.GetYearWhenPriceTurnZero(1));
 				
 	}
 
