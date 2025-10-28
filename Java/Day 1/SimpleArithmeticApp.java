@@ -1,11 +1,15 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.security.SecureRandom;
 
 public class SimpleArithmeticApp{
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
+		SecureRandom randomNumber = new SecureRandom();
 		
 		String docMain = """
+
+		int scissorRockPaper = randomNumber.nextInt(3);		
 
 		Welcome to My Subtraction Arithmetic App
 		It helps you sharpen your subtraction knowledge
@@ -13,7 +17,7 @@ public class SimpleArithmeticApp{
 		""";
 		System.out.print(docMain);
 
-		int firstNumber = 10;
+		int firstNumber  = 10;
 		int secondNumber = 5;
 		int scores = 0;
 		
