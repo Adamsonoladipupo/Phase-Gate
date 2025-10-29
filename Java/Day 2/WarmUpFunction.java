@@ -7,7 +7,7 @@ public class WarmUpFunction{
 		int price = 50000;
 		int priceAndNumberOfItems = NumberOfItems * 50000;
 		while (price == 0){
-			tempVar = 50000 * 0.08;
+			tempVar = price * 0.08;
 			price -= tempVar;
 			numberOfYears ++;
 			tempVar = 0;
