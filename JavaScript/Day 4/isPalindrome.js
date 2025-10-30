@@ -1,7 +1,6 @@
 testList = ["madam", "racecar", "hello", "noon"];
 
 function IsPerfectSquareFunction(testList){
-
 	for (let count = 0; count < testList.length; count++){
 		let wordInList = testList[count]
 		let newWord = ""
@@ -9,10 +8,8 @@ function IsPerfectSquareFunction(testList){
 			newWord += wordInList[counter];
 		}
 		//console.log(newWord);
-		testList[count] = wordInList==newWord;
+		testList[count] = wordInList == newWord;
 	}
 	return testList
 }
-
-
 console.log(IsPerfectSquareFunction(testList));
