@@ -7,6 +7,7 @@ public class QuickTest{
 		name.add("Ade");
 		name.add("Shola");
 		name.add("Michael");
+		name.add("Femi");
 
 		ArrayList <String> subject = new ArrayList <String>();
 		subject.add("English");
@@ -16,6 +17,7 @@ public class QuickTest{
 			{23,50},
 			{50, 60},
 			{60, 40},
+			{20, 90},
 		};
 	
 		ArrayList <Integer> position = new ArrayList <Integer> ();
