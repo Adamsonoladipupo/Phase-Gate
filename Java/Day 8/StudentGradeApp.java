@@ -132,6 +132,7 @@ public class StudentGradeApp{
 					break;
 				}
 				System.out.print("Computing, please wait  . . . . . .");
+				
 
 			}// end of case 6
 			case "7"->{

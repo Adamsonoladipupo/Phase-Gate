@@ -42,7 +42,9 @@ public class QuickTest{
 		printArray(name,studentsScore);
 
 		printOtherSummary(getTotal(studentsScore), getTotalAverage(studentsScore));
+		
 
+		printSubjectSummary(subject, name, studentsScore);
 	
 	
 
@@ -61,8 +63,6 @@ public class QuickTest{
 		for (int count = 0; count < arrayName.length; count++){
 			matchPosition[count] = count+1;
 		}
-
-
 		for (int row = 0; row < arrayName.length; row++){
 			System.out.print(name.get(row) + "	");
 			for (int column = 0; column < arrayName[row].length; column++){
@@ -75,15 +75,32 @@ public class QuickTest{
 			if (avg < 50){System.out.print("	Pass");}
 			else if (avg > 50 && avg <= 60){System.out.print("	Good");}
 			else if (avg > 60 && avg <= 70){System.out.print("	very Good");}
-			else {System.out.print("	Exclnt");}
-			System.out.print("	" + matchPosition[row]);
+			else {System.out.print("	Exclnt");}	
+			//System.out.print("	" + matchPosition[row]);
 			StudentsTotalScore[row] = eachStudenttotal;
 			eachStudenttotal = 0;
 			System.out.println();
+			
 		}
-		System.out.print(Arrays.toString(StudentsTotalScore));
+		System.out.println(Arrays.toString(StudentsTotalScore));
 		
+		//re ording my score subjectTotalScore
+		for (int count = 0; count< StudentsTotalScore.length-1; count++){
+			for (int counter = 0; counter < StudentsTotalScore.length-1-count; counter++){
+				if (StudentsTotalScore[counter] < StudentsTotalScore[counter+1]){
+					int temp = StudentsTotalScore[counter];
+					StudentsTotalScore[counter] = StudentsTotalScore[counter+1];
+					StudentsTotalScore[counter+1] = temp;
+				}
+			}
+		}
+		for (int count = 0; count < StudentsTotalScore.length; count++){
+			System.out.println(StudentsTotalScore[count] + " position: " + (count+1));
+		}	
+
+			
 	}
+
 	public static int getTotal(int[][] arrayName){
 		int total = 0;
  		for (int row = 0; row < arrayName.length; row++) {
@@ -126,5 +143,24 @@ public class QuickTest{
 		System.out.printf(display, input1, input2);
 	}
 
+	public static void printSubjectSummary(ArrayList<String> subjectName, ArrayList<String> studentName, int[][] arrayName){
+		String subject = "";
+		int higest = 0;
+		for ( int count = 0; count < subjectName.size(); count++){
+			System.out.println("Summary of :" + subjectName.get(count));
+			for (int counter; counter < studentName.length; counter++)
+			
+		}
+		String display = """
+		Higest scoring student is: 
+		lowest scoring student is:
+		Total score is :
+		Average score: 
+		Number of passes:
+		Number of fails:  
+		""";
+
+		//System.out.printf(display, subject);
+	}
 
 }

@@ -50,7 +50,7 @@ public class StudentGradeFunctions{
 	}
 
 	public static void printStudentGrade(ArrayList<String> name, int[][] arrayName){
-		double average = 0;
+		double average = 0; 
 		int eachStudenttotal = 0;
 		for (int row = 0; row < arrayName.length; row++){
 			System.out.print(name.get(row) + "	");
