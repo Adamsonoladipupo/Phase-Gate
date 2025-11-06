@@ -144,11 +144,24 @@ public class QuickTest{
 	}
 
 	public static void printSubjectSummary(ArrayList<String> subjectName, ArrayList<String> studentName, int[][] arrayName){
-		String subject = "";
-		int higest = 0;
+		String subject = ""; int counter ;
+		int higest = 0; int pass = 0; int fail = 0;
+		int totalScore = 0;
 		for ( int count = 0; count < subjectName.size(); count++){
 			System.out.println("Summary of :" + subjectName.get(count));
-			for (int counter; counter < studentName.length; counter++)
+			for (counter = 0; counter < studentName.size(); counter++){
+				totalScore += arrayName[counter][count];
+				if (arrayName[counter][count] < 50){
+					fail++;
+				} else {pass++;}
+				//System.out.println(arrayName[counter][count]);
+			} 
+			System.out.println("Number of pass: " + pass); pass = 0;
+			System.out.println("Number of fail: " + fail); fail = 0;
+			System.out.println("totalScore: " + totalScore);
+			System.out.println("AverageScore: " + totalScore/counter);
+			totalScore = 0;
+			System.out.print("------------------------------------");
 			
 		}
 		String display = """
