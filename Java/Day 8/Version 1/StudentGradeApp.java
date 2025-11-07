@@ -21,10 +21,9 @@ public class StudentGradeApp{
 		ArrayList <String> subjectNamesList = new ArrayList <String>();
 
 		int[][] studentScore = new int[numberOfStudents][numberOfSubjects];
-		//ArrayList <Integer> studentScore = new ArrayList <Integer>();
 
 		String mainMenuSelection = "";
-		while(!mainMenuSelection.equalsIgnoreCase("8")){
+		while(!mainMenuSelection.equalsIgnoreCase("7")){
 		String welcomeDisplay = """
 		
 			-- > Welcome to %s < --
@@ -37,9 +36,8 @@ public class StudentGradeApp{
 			3. Enter stuent's subject score
 			4. Check overal Students Grade
 			5. Check subject summary
-			6. Check student summary
-			7. Other summary
-			8. Exit
+			6. Other summary
+			7. Exit
 
 		""";
 		System.out.printf(welcomeDisplay,schoolName,numberOfStudents, numberOfSubjects);
@@ -114,41 +112,25 @@ public class StudentGradeApp{
 				StudentGradeFunctions.printStudentGrade(studentNamesList, studentScore);
 
 				System.out.print(line);
-				//System.out.print(line);
-				//System.out.print(line);
-				
 			}// end of case 4
 			case "5"->{
 				if (studentNamesList.size() < 1 || subjectNamesList.size() < 1 || studentScore.length < 1){
 					System.out.print("Empty database");
 					break;
 				}
-				System.out.print("Computing, please wait  . . . . . .");
-
+				StudentGradeFunctions.printSubjectSummary(subjectNamesList, studentNamesList, studentScore);
 			}// end of case 5
+
 			case "6"->{
 				if (studentNamesList.size() < 1 || subjectNamesList.size() < 1 || studentScore.length < 1){
 					System.out.print("Empty database");
 					break;
 				}
-				System.out.print("Computing, please wait  . . . . . .");
-				
 
-			}// end of case 6
-			case "7"->{
-				if (studentNamesList.size() < 1 || subjectNamesList.size() < 1 || studentScore.length < 1){
-					System.out.print("Empty database");
-					break;
-				}
-				
-				int total = StudentGradeFunctions.getTotalTotal(studentScore);
-				double average = StudentGradeFunctions.getTotalAverage(studentScore, (numberOfSubjects*numberOfStudents));
-				//System.out.print(total);
-				StudentGradeFunctions.printOtherSummary(total, average);
-
-
+				StudentGradeFunctions.printOtherSummary(subjectNamesList, studentNamesList, studentScore);
 			}// end of case 7
-			case "8"->{
+
+			case "7"->{
 				System.out.print("Thank you for schooling with us");
 				break;
 			}
@@ -159,9 +141,5 @@ public class StudentGradeApp{
 		} //end of switch case
 		}// end of while loop
 
-
-
-
-	} // end of Main method
-
+	}
 }

@@ -12,12 +12,13 @@ public class QuickTest{
 		ArrayList <String> subject = new ArrayList <String>();
 		subject.add("English");
 		subject.add("Maths");
+		//subject.add("Science");
 
 		int[][] studentsScore = {
 			{23,50},
-			{50, 60},
+			{50, 70},
 			{60, 40},
-			{20, 90},
+			{20, 8},
 		};
 	
 		ArrayList <Integer> position = new ArrayList <Integer> ();
@@ -43,7 +44,7 @@ public class QuickTest{
 
 		printArray(name,studentsScore);
 
-		printOtherSummary(getTotal(studentsScore), getTotalAverage(studentsScore));
+		printOtherSummary(subject, name, studentsScore);
 		
 
 		printSubjectSummary(subject, name, studentsScore);
@@ -126,56 +127,94 @@ public class QuickTest{
 		return average;
 	}
 
-	public static void printOtherSummary( int input1, int input2){
+	public static void printOtherSummary(ArrayList<String> subjectName, ArrayList<String> studentName, int[][] arrayName){
+
+		int totalforEachStudent = 0; int classTotal = 0; double classAverage = 0;
+		int makecount = 0;
+		int[] listSumOfEachStusent = new int[studentName.size()];
+		String name = "";
+		System.out.println("===================================================");
+		for (int count = 0; count < studentName.size(); count++){
+			for (int counta = 0; counta < subjectName.size(); counta++){
+				totalforEachStudent += arrayName[count][counta];
+				makecount++;
+			}
+			listSumOfEachStusent[count] = totalforEachStudent;
+			classTotal += totalforEachStudent;
+			totalforEachStudent = 0;
+			
+		}
+		System.out.println("Class total score 1s: " + classTotal);
+		classAverage = classTotal/makecount;
+		System.out.println("Class total Average 1s: " + classAverage);
+		System.out.println("---------------------------------------------------");
+
+		int highest = listSumOfEachStusent[0]; int lowest = listSumOfEachStusent[0];
+		for (int count = 0; count < listSumOfEachStusent.length; count++){
+			if (listSumOfEachStusent[count] > highest){
+				highest = listSumOfEachStusent[count];
+				name = studentName.get(count);
+			}
+			if (listSumOfEachStusent[count] < lowest){
+				lowest = listSumOfEachStusent[count];
+				name = studentName.get(count);
+			}
+		}
 		
-		String display = """
+		System.out.println("---------------------------------------------------");
+		System.out.println("The best graduating student is : " + name + " scoring " +  highest);
+		System.out.println("The worse graduating student is : " + name + " scoring " +  lowest);
 
-		===================================================
-		Best graduating student is: -- scoring --
-		---------------------------------------------------
-		Worse graduating student is: -- scoring 
-		---------------------------------------------------
+		System.out.println("===================================================");
 
-		===================================================
-		Class total score 1s: %d
-		---------------------------------------------------
-		Class Average score is : %d
-		===================================================
-		""";
-		System.out.printf(display, input1, input2);
 	}
 
 	public static void printSubjectSummary(ArrayList<String> subjectName, ArrayList<String> studentName, int[][] arrayName){
-		String subject = ""; int counter ;
+		String subject = ""; int counter ; String name = "";
 		int higest = 0; int pass = 0; int fail = 0;
 		int totalScore = 0;
+
+		int[] listSumOfEachSubject = new int[studentName.size()];
+		int highest = listSumOfEachSubject[0]; int lowest = listSumOfEachSubject[0];
+
 		for ( int count = 0; count < subjectName.size(); count++){
 			System.out.println("Summary of :" + subjectName.get(count));
 			for (counter = 0; counter < studentName.size(); counter++){
 				totalScore += arrayName[counter][count];
+
+				listSumOfEachSubject[counter] = arrayName[counter][count];
+
 				if (arrayName[counter][count] < 50){
 					fail++;
-				} else {pass++;}
-				//System.out.println(arrayName[counter][count]);
+				}
+				if (arrayName[counter][count] >= 50){pass++;}
 			} 
 			System.out.println("Number of pass: " + pass); pass = 0;
 			System.out.println("Number of fail: " + fail); fail = 0;
 			System.out.println("totalScore: " + totalScore);
 			System.out.println("AverageScore: " + totalScore/counter);
 			totalScore = 0;
-			System.out.print("------------------------------------");
+			//System.out.println(Arrays.toString(listSumOfEachSubject));
+			for (int kount = 0; kount < counter; kount++){
+				if (listSumOfEachSubject[kount] > highest){
+					highest = listSumOfEachSubject[kount];
+					name = studentName.get(kount);
+				}
+				if (listSumOfEachSubject[kount] < lowest){
+					lowest = listSumOfEachSubject[kount];
+					name = studentName.get(kount);
+				}
+			}
+
+			System.out.println("The highest scoring student is : " + name + " scoring " +  highest);
+			System.out.println("The lowest scoring student is : " + name + " scoring " +  lowest);
+
+			System.out.println("------------------------------------");
+
+			listSumOfEachSubject = new int[studentName.size()];
 			
 		}
-		String display = """
-		Higest scoring student is: 
-		lowest scoring student is:
-		Total score is :
-		Average score: 
-		Number of passes:
-		Number of fails:  
-		""";
 
-		//System.out.printf(display, subject);
 	}
 
 }
